@@ -1,4 +1,5 @@
 {
+    "C_Cpp.errorSquiggles": "Enabled",
     "files.associations": {
         "istream": "cpp",
         "ostream": "cpp",
@@ -46,5 +47,5 @@
         "streambuf": "cpp",
         "typeinfo": "cpp"
     },
-    "java.home":"C:/Program Files/Eclipse Foundation/jdk-11.0.12.7-hotspot",
+    
 }
