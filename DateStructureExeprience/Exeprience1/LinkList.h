@@ -29,7 +29,7 @@ LinkList(ElemType v[], int n){
     }
     p->data=v[n-1];
 } // 有参数的构造函数
-virtual ~LinkList(); // 析构函数
+virtual ~LinkList(){}// 析构函数
 Node<ElemType>* GetHead(){
     return head;
 }//获得头指针
@@ -55,8 +55,12 @@ int Get(int index, ElemType &e) const{
     if(index>length){
         return -1;
     }
-    else{Node<ElemType> *p=head;
-    while(i<index){p=p->next;}
+    else{
+        Node<ElemType> *p=head;
+    while(i<index){
+        p=p->next;
+        i++;
+        }
     e=p->data;}
     return 1;
 } // 求指定位置的元素
@@ -90,7 +94,7 @@ int Delete(int index){
             m=p;
             p=p->next;
         }
-        m->next=NULL;
+        m->next=nullptr;
         delete p;
     }
     else{
@@ -106,6 +110,7 @@ int Delete(int index){
         return 1;
 } // 删除元素
 int Insert(int index, const ElemType &e){
+    length++;
     Node<ElemType> *p=head;
     Node<ElemType> *newNode=new Node<ElemType>();
     newNode->data=e;
@@ -116,7 +121,7 @@ int Insert(int index, const ElemType &e){
     else if(index==length){
         while(p->next) p=p->next;
         p->next=newNode;
-        newNode=NULL;
+        newNode=nullptr;
     }
     else{
         Node<ElemType> *m;

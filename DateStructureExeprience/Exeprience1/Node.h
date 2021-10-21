@@ -1,3 +1,4 @@
+#include<iostream>
 //Node.h
 // 结点类
 template <class ElemType>
@@ -9,7 +10,7 @@ Node<ElemType> *next=NULL; // 指针域
 Node(){} // 无参数的构造函数
 Node(ElemType e, Node<ElemType> *link = NULL){
     if(link==NULL){
-        cout<<"error";
+        std::cout<<"error";
         }
     else{
         link->data=e;
