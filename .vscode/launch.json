@@ -2,6 +2,19 @@
     "version": "0.2.0",
     "configurations": [
         {
+            "type": "java",
+            "name": "Launch App",
+            "request": "launch",
+            "mainClass": "App",
+            "projectName": "workspace_e2941e3c"
+        },
+        {
+            "type": "java",
+            "name": "Debug (Launch) - Current File",
+            "request": "launch",
+            "mainClass": "${file}"
+        },
+        {
             "name": "(gdb) Launch",
             "preLaunchTask": "build",
             "type": "cppdbg",
@@ -13,7 +26,7 @@
             "environment": [],
             "externalConsole": true,
             "MIMode": "gdb",
-            "miDebuggerPath": "C:/Program Files/CodeBlocks/MinGW/bin/gdb.exe", // 这里要修改为自己所安装的gdb.exe路径。最后的/gdb.exe无需更改。
+            "miDebuggerPath": "C:/Program Files/CodeBlocks/MinGW/bin/gdb.exe",
             "setupCommands": [
                 {
                     "description": "Enable pretty-printing for gdb",
@@ -21,5 +34,6 @@
                     "ignoreFailures": true
                 }
             ]
-        }]
+        }
+    ]
 }
