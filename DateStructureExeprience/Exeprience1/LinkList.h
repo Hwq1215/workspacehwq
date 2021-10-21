@@ -102,7 +102,20 @@ int Delete(int index){
         n=p;
         p=p->next;
         }
+        length--;
         return 1;
 } // 删除元素
-int Insert(int index, const ElemType &e); // 在制定位置插入元素
+int Insert(int index, const ElemType &e){
+    Node<ElemType> *p=head;
+    Node<ElemType> *newNode=new Node<ElemType>();
+    newNode->data=e;
+    if(index==1){     
+        newNode->next=head;
+        head=newNode;
+    }
+    else if(index==length){
+        while(p->next) p=p->next;
+        
+    }
+} // 在制定位置插入元素
 };
