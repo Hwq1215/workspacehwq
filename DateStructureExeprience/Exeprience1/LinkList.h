@@ -115,7 +115,19 @@ int Insert(int index, const ElemType &e){
     }
     else if(index==length){
         while(p->next) p=p->next;
-        
+        p->next=newNode;
+        newNode=NULL;
+    }
+    else{
+        Node<ElemType> *m;
+        int i=1;
+        while(i<index){
+            m=p;
+            p=p->next;
+            i++;
+        }
+        m->next=newNode;
+        newNode->next=p;
     }
 } // 在制定位置插入元素
 };
