@@ -95,7 +95,6 @@ class TransfromStr{
 }
 public class Calculator{
     public static void main(String [] args) {
-        int i=0;
         StringBuffer flow= new StringBuffer("1+(99*8)/5=");
         TransfromStr t=new TransfromStr();
         System.out.println(t.change(flow));
