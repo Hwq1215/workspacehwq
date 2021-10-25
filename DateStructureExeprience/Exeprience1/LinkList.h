@@ -61,7 +61,8 @@ int Get(int index, ElemType &e) const{
         p=p->next;
         i++;
         }
-    e=p->data;}
+    e=p->data;
+    }
     return 1;
 } // 求指定位置的元素
 int Set(int index, const ElemType &e){
