@@ -1,7 +1,7 @@
-
 import java.util.Stack;
 import java.util.Scanner;
 import java.util.regex.*;
+//将中序表达式转化为后序表达式
 class TransfromStr extends BaseMethod{
     public StringBuffer change(String nativeStr){
     Stack<Character> sign=new Stack<>();
@@ -27,8 +27,7 @@ class TransfromStr extends BaseMethod{
                 sign.pop();
         }
         else if(is_operate(ch)){
-            
-            
+
                 while(!sign.empty()&&first(ch)<=first(sign.peek())){
                     back.append(sign.pop());
                     back.append(" ");
@@ -40,7 +39,8 @@ class TransfromStr extends BaseMethod{
                     back.append(" ");
                     i+=(Integer.toString(changeBigInt(i+1,nativeStr))).length();
                     }
-        }
+
+        }                                                           
        else if(ch=='='){
            while(!sign.empty()){
                back.append(sign.pop());
@@ -50,7 +50,7 @@ class TransfromStr extends BaseMethod{
     }
     return back;
 }
-     
+    //该函数只需类内部调用,运用封装
     private static int changeBigInt(int local,String str){
         char c=str.charAt(local);
         int num=(int)(c-'0');
@@ -81,7 +81,7 @@ class TransfromStr extends BaseMethod{
     }
 
 }
-
+//根据后序表达式进行计算
 class GetResult extends BaseMethod{
     static int resultIs(StringBuffer input){
         Stack<Integer> num_stack=new Stack<Integer>();
@@ -123,7 +123,7 @@ class GetResult extends BaseMethod{
         return cnt;
     }
 }
-
+//一些可以继承的基本方法
 class BaseMethod{
     static boolean is_number(char ch){
         if(ch=='0'||ch=='1'||ch=='2'||ch=='3'||ch=='4'||ch=='5'||ch=='6'||ch=='7'||ch=='8'||ch=='9'){
@@ -168,6 +168,9 @@ public class Calculator{
         TransfromStr t=new TransfromStr();
         System.out.println("逆波兰式是: "+t.change(flow));
         System.out.println("计算结果是: "+GetResult.resultIs(t.change(flow)));
+        }
+        else{
+            System.out.println("输入的式子不合乎规范");
         }
         }
         scan.close();       
