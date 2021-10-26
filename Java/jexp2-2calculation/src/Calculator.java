@@ -162,8 +162,10 @@ public class Calculator{
         String pattern ="^[\\d\\+\\*/\\-\\)\\(]+=$";
        
         if(scan.hasNext()){
+
             flow=scan.next();
         boolean flag=Pattern.matches(pattern,flow);
+
         if(flag){
         TransfromStr t=new TransfromStr();
         System.out.println("逆波兰式是: "+t.change(flow));
