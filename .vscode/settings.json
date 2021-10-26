@@ -49,7 +49,7 @@
     },
     "java.project.sourcePaths": [
         "Java/exp2-1/src",
-        "Java/jexp2-2 calculation"
+        "Java/jexp2-2calculation/src"
     ],
     
 }
