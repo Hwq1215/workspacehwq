@@ -128,6 +128,7 @@ class GetResult extends BaseMethod{ //运用继承
         }
         return cnt;
     }
+    
 }
 //一些可以继承的基本方法
 class BaseMethod{
@@ -173,7 +174,8 @@ public class Calculator{
         boolean flag=Pattern.matches(pattern,flow);
 
         if(flag){
-        TransfromStr t=new TransfromStr();
+        BaseMethod B=new TransfromStr();
+        TransfromStr t=(TransfromStr)B;   //运用多态
         t.SetString(flow);
         System.out.println("逆波兰式是: "+t.change());
         System.out.println("计算结果是: "+GetResult.resultIs(t.change()));
