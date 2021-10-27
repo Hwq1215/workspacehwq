@@ -2,8 +2,8 @@ import java.util.Stack;
 import java.util.Scanner;
 import java.util.regex.*;
 //将中序表达式转化为后序表达式
-class TransfromStr extends BaseMethod{
-    
+class TransfromStr extends BaseMethod{ //运用继承
+    //运用封装
     private String nativeStr=new String();
 
     void SetString(String nstr){
@@ -57,7 +57,6 @@ class TransfromStr extends BaseMethod{
     }
     return back;
 }
-    //该函数只需类内部调用,运用封装
     private static int changeBigInt(int local,String str){
         char c=str.charAt(local);
         int num=(int)(c-'0');
@@ -89,7 +88,7 @@ class TransfromStr extends BaseMethod{
 
 }
 //根据后序表达式进行计算
-class GetResult extends BaseMethod{
+class GetResult extends BaseMethod{ //运用继承
     static int resultIs(StringBuffer input){
         Stack<Integer> num_stack=new Stack<Integer>();
         for(int i=0;i<input.length();i++){
@@ -165,6 +164,7 @@ public class Calculator{
     public static void main(String [] args) {
         String flow= new String();
         Scanner scan=new Scanner(System.in);
+        BaseMethod B=new TransfromStr();//运用多态
         System.out.println("请输入表达式，以等号(=)结尾");
         String pattern ="^[\\d\\+\\*/\\-\\)\\(]+=$";
        
