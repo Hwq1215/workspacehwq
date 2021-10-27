@@ -96,7 +96,7 @@ class GetResult extends BaseMethod{ //运用继承
             if(is_operate(ch)){
                 int num_b=num_stack.pop();
                 int num_a=num_stack.pop();
-                int res=judge(ch,num_a,num_b);
+                int res=Calculate(ch,num_a,num_b);
                 num_stack.push(res);
                 if(input.length()-1!=i) i++;
             }
@@ -144,7 +144,7 @@ class BaseMethod{
         }
         else return false;
     } 
-    static int judge(char ch,int num_a,int num_b) {
+    static int Calculate(char ch,int num_a,int num_b) {
         switch(ch){
             case '+':
                 return num_a+num_b;
@@ -164,7 +164,6 @@ public class Calculator{
     public static void main(String [] args) {
         String flow= new String();
         Scanner scan=new Scanner(System.in);
-        BaseMethod B=new TransfromStr();//运用多态
         System.out.println("请输入表达式，以等号(=)结尾");
         String pattern ="^[\\d\\+\\*/\\-\\)\\(]+=$";
        
