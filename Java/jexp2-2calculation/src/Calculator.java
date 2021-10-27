@@ -3,7 +3,14 @@ import java.util.Scanner;
 import java.util.regex.*;
 //将中序表达式转化为后序表达式
 class TransfromStr extends BaseMethod{
-    public StringBuffer change(String nativeStr){
+    
+    private String nativeStr=new String();
+
+    void SetString(String nstr){
+        nativeStr=nstr;
+    }
+
+    public StringBuffer change(){
     Stack<Character> sign=new Stack<>();
     char ch;
     StringBuffer back=new StringBuffer();
@@ -168,8 +175,9 @@ public class Calculator{
 
         if(flag){
         TransfromStr t=new TransfromStr();
-        System.out.println("逆波兰式是: "+t.change(flow));
-        System.out.println("计算结果是: "+GetResult.resultIs(t.change(flow)));
+        t.SetString(flow);
+        System.out.println("逆波兰式是: "+t.change());
+        System.out.println("计算结果是: "+GetResult.resultIs(t.change()));
         }
         else{
             System.out.println("输入的式子不合乎规范");
