@@ -3,6 +3,13 @@
     "configurations": [
         {
             "type": "java",
+            "name": "Launch app",
+            "request": "launch",
+            "mainClass": "app",
+            "projectName": "workspace_e2941e3c"
+        },
+        {
+            "type": "java",
             "name": "Launch Calculator",
             "request": "launch",
             "mainClass": "Calculator",
