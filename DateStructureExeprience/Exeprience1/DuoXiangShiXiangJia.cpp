@@ -59,15 +59,18 @@ class List{
 
 class formal{
     public:
-    List<int> result(List<int> &a,List<int> &b){
-        List<int> output;
+    List<double> result(List<double> &a,List<double> &b,char c){
+        List<double> output;
         int max=(a.get_length()>b.get_length())?a.get_length():b.get_length();
         output.set_length(max);
-        Node<int> *p1=a.get_head()->next;
-        Node<int> *p2=b.get_head()->next;
+        Node<double> *p1=a.get_head()->next;
+        Node<double> *p2=b.get_head()->next;
         for(int i=2;i<=max;i++){
             if(p1&&p2){
+                if(c=='+')
                 output.set_value(p1->data+p2->data,i);
+                else if(c=='-')
+                output.set_value(p1->data-p2->data,i);
                 p1=p1->next;
                 p2=p2->next;
             }
@@ -76,24 +79,27 @@ class formal{
                 p1=p1->next;
             }
             else if(p2){
-                output.set_value(p1->data,i);
+                if(c=='+')
+                output.set_value(p2->data,i);
+                if(c=='-')
+                output.set_value(-p2->data,i);
                 p2=p2->next;
             }
         }
         return output;
     }
 
-    string formal_is(List<int> &a){
+    string formal_is(List<double> &a){
         int i=0;
         string outstr;
-        Node<int> *p=a.get_head();
+        Node<double> *p=a.get_head();
         while(p->next){
         p=p->next;
         if(p->data!=0){
-            outstr.append(changeToString(p->data)); 
+            outstr.append(to_string(p->data)); 
             if(i!=0) {
                 outstr.append("x^");
-                outstr.append(changeToString(i));
+                outstr.append(to_string(i));
                 }
             if(i!=a.get_length()-2) outstr.append(" + ");
         }
@@ -102,28 +108,10 @@ class formal{
         return outstr;
     }
 
-    static string changeToString(int value){
-        int flag=0;
-        if(value<0){
-            flag=1;
-            value*=-1;
-            }
-        string str;
-        int num=0;
-        while(value)
-        {
-            num=value%10;
-            str+=(char)(num+'0');
-            value/=10;
-        }
-        if(flag) str.append("-");
-        reverse(str.begin(),str.end());
-        return str;
-    }
 };
 
-void putin(List<int> &a){
-    int numIn;
+void putin(List<double> &a){
+    double numIn;
     for(int i=1;i<a.get_length();i++){
         cout<<"第x^"<<i-1<<"项的系数:";
         cin>>numIn;
@@ -133,8 +121,8 @@ void putin(List<int> &a){
 
 int main(){
     system("chcp 65001");
-    List<int> a;
-    List<int> b;
+    List<double> a;
+    List<double> b;
     int along=0;
     int blong=0; 
     cout<<"a多项式最高次"<<endl;
@@ -146,8 +134,24 @@ int main(){
     b.set_length(blong+2);
     putin(b);
     formal f;
-    List<int> result=f.result(a,b);
-    cout<<endl<<"结果是:"<<f.formal_is(result)<<endl;
+    while(1){
+        cout<<"加法输入'+',减法输入'-',显示a多项式输入'a',显示b多项式输入'b'"<<endl;
+        char input;
+        cin>>input;
+        switch (input){
+            case 'a':
+            cout<<f.formal_is(a)<<endl;
+            break;
+            case 'b':
+            cout<<f.formal_is(b)<<endl;
+            break;
+            case '+':
+            case '-':
+            List<double> result=f.result(a,b,input);
+            cout<<"结果是:"<<f.formal_is(result)<<endl;
+            break;
+    }
+    }
     system("pause");
 }
 

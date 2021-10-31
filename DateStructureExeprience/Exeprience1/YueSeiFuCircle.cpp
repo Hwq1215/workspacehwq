@@ -12,6 +12,7 @@ class CycleCircle{
     string putstr;
 
     public:
+//算法部分
     int set_member(int n){
         if(n>0){
             length=n;
@@ -44,7 +45,7 @@ class CycleCircle{
             }
         }
     }
-
+//
     bool is_empty(){
         return member.empty();
     }
