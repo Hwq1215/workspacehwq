@@ -16,20 +16,26 @@ class HuffmanCode{
     vector<HuffmanTree> Htree;
     int m,n;
     vector<string> code;
-
-HuffmanCode(vector<element> into){
-    n=into.size();
-    m=2*n-1;
-    Htree.resize(m+1);
-    for(int i=1;i<=m;i++){
-         if(i<=n) Htree[i].weight=into[i-1];
-         Htree[i].lchild=0;
-         Htree[i].rchild=0;
-         Htree[i].parent=0;
+    public:
+    HuffmanCode(vector<element> into){
+        n=into.size();
+        m=2*n-1;
+        Htree.resize(m+1);
+        for(int i=1;i<=m;i++){
+            if(i<=n) Htree[i].weight=into[i-1];
+            Htree[i].lchild=0;
+            Htree[i].rchild=0;
+            Htree[i].parent=0;
+        }
+    make();
     }
 
-}
-    public:
+    int show(){
+        for(int i=0;i<code.size();i++){
+            cout<<Htree[i+1].weight<<":"<<code[i]<<endl;
+        }
+    }
+    private:
     void make(){
         int minest,miner;
         for(int i=n+1;i<=m;i++){
@@ -42,14 +48,7 @@ HuffmanCode(vector<element> into){
         }
         coding();
     }
-
-    int show(){
-        for(int i=0;i<code.size();i++){
-            cout<<Htree[i+1].weight<<":"<<code[i]<<endl;
-        }
-    }
         
-    private:
     void selete(vector<HuffmanTree> t,int k,int &minest,int &miner){
         int cnt=0;
         miner=0;
@@ -89,10 +88,7 @@ HuffmanCode(vector<element> into){
                 str.clear();
             }
         }
-};
-
-
-
+    };
 
 int main(){
     int total;
@@ -106,8 +102,6 @@ int main(){
         input.push_back(dol);
     }
     HuffmanCode<double> h(input);
-    h.make();
     h.show();
     system("pause");
-
 }
