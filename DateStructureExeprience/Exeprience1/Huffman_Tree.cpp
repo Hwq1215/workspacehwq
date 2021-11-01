@@ -14,12 +14,12 @@ template<class element>
 class HuffmanCode{
     private:
     vector<HuffmanTree> Htree;
-    int n;
+    int m,n;
     vector<string> code;
 
 HuffmanCode(vector<element> into){
     n=into.size();
-    int m=2*n-1;
+    m=2*n-1;
     Htree.resize(m+1);
     for(int i=1;i<=m;i++){
          if(i<=n) Htree[i].weight=into[i-1];
