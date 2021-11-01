@@ -17,18 +17,21 @@ class HuffmanCode{
     int n;
     vector<string> code;
 
+HuffmanCode(vector<element> into){
+    n=into.size();
+    int m=2*n-1;
+    Htree.resize(m+1);
+    for(int i=1;i<=m;i++){
+         if(i<=n) Htree[i].weight=into[i-1];
+         Htree[i].lchild=0;
+         Htree[i].rchild=0;
+         Htree[i].parent=0;
+    }
+
+}
     public:
-    void make(vector<element> into){
+    void make(){
         int minest,miner;
-        n=into.size();
-        int m=2*n-1;
-        Htree.resize(m+1);
-        for(int i=1;i<=m;i++){
-            if(i<=n) Htree[i].weight=into[i-1];
-            Htree[i].lchild=0;
-            Htree[i].rchild=0;
-            Htree[i].parent=0;
-        }
         for(int i=n+1;i<=m;i++){
             selete(Htree,i-1,minest,miner);
             Htree[i].weight=Htree[minest].weight+Htree[miner].weight;
@@ -102,8 +105,8 @@ int main(){
         cin>>dol;
         input.push_back(dol);
     }
-    HuffmanCode<double> h;
-    h.make(input);
+    HuffmanCode<double> h(input);
+    h.make();
     h.show();
     system("pause");
 
