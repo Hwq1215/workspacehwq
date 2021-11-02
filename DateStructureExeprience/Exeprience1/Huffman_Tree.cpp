@@ -3,17 +3,17 @@
 #include <algorithm>
 #include<string>
 using namespace std;
-
+template<class element>
 class HuffmanTree{
     public:
-    double weight;
+    element weight;
     int parent,lchild,rchild;
 };
 
 template<class element>
 class HuffmanCode{
     private:
-    vector<HuffmanTree> Htree;
+    vector<HuffmanTree<element>> Htree;
     int m,n;
     vector<string> code;
     public:
@@ -27,14 +27,16 @@ class HuffmanCode{
             Htree[i].rchild=0;
             Htree[i].parent=0;
         }
-    make();
+    make();                 //生成Huffman树
+    coding();               //进行编码
     }
 
-    int show(){
+    void show(){
         for(int i=0;i<code.size();i++){
             cout<<Htree[i+1].weight<<":"<<code[i]<<endl;
         }
     }
+
     private:
     void make(){
         int minest,miner;
@@ -46,10 +48,8 @@ class HuffmanCode{
             Htree[minest].parent=i;
             Htree[miner].parent=i;
         }
-        coding();
-    }
-        
-    void selete(vector<HuffmanTree> t,int k,int &minest,int &miner){
+    }   
+    void selete(vector<HuffmanTree<element>> t,int k,int &minest,int &miner){
         int cnt=0;
         miner=0;
         minest=0;
