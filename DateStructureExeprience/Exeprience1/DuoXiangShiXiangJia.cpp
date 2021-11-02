@@ -134,6 +134,7 @@ int main(){
     b.set_length(blong+2);
     putin(b);
     formal f;
+    List<double> result;
     while(1){
         cout<<"加法输入'+',减法输入'-',显示a多项式输入'a',显示b多项式输入'b'"<<endl;
         char input;
@@ -147,8 +148,11 @@ int main(){
             break;
             case '+':
             case '-':
-            List<double> result=f.result(a,b,input);
+            result=f.result(a,b,input);
             cout<<"结果是:"<<f.formal_is(result)<<endl;
+            break;
+            default:
+            cout<<"输入不符合规范"<<endl;
             break;
     }
     }
