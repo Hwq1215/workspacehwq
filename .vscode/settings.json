@@ -45,7 +45,8 @@
         "sstream": "cpp",
         "stdexcept": "cpp",
         "streambuf": "cpp",
-        "typeinfo": "cpp"
+        "typeinfo": "cpp",
+        "map": "cpp"
     },
     "java.project.sourcePaths": [
         "Java/exp2-1/src",
