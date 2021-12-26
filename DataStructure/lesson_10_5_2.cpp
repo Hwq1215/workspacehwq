@@ -9,7 +9,6 @@ typedef struct triple{
 };
 
 
-
 void transmatrix(){
 
 }

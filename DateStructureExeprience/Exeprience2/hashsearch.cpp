@@ -6,6 +6,10 @@ class student{
     public:
     string name;
     type value;
+    student(string a,type b){
+        this->name = a;
+        this->value = b;
+    }
 };
 class node{
     public:
@@ -14,10 +18,13 @@ class node{
     node *next = nullptr;
 };
 class Mymap{
+    private:
+    int length = 0;
     public:
     node *data;
     Mymap(int num,vector<student> s){
         int total = searchBigNum(num*4/3);
+        length = total;
         data = new node[total];
         for(int i = 0;i<s.size();i++){
             node* OneNode = new node;
@@ -30,9 +37,24 @@ class Mymap{
             p->next = OneNode;
         }
     }
+    student search(string input){
+        student stu("0",-1);
+        if (length == 0) return stu;
+        node *p = &data[getPosition(input,length)];
+        p = p->next;
+        while( p!= nullptr){
+            if(p->name == input){
+                stu.name = p->name;
+                stu.value = p->value;
+                return stu;
+            }
+            p = p->next;
+        }
+        return stu;
+    }
     private:
     int getPosition(string input,int total){//获取字符串对应的位置
-        return ((int)input[0]+(int)input[input.size()-1])%total;
+        return (((int)input[0])*input.size()+(int)input[input.size()-1])%total;
     }
     int searchBigNum(int temp){//寻找最大质数
         int result = 2;
@@ -54,11 +76,21 @@ class Mymap{
     }
 };
 
-
 int main(){
     student s1 = {"jack",60};
     student s2 = {"mary",70};
-    vector<student> s = {s1,s2};
-    Mymap hash(2,s);
+    student s3 = {"jcnk",82};
+    student s4 = {"jop",88};
+    vector<student> s = {s1,s2,s3,s4};
+    for(int i = 0;i<s.size();i++ ){
+        cout<<s[i].name<<"  "<<s[i].value<<endl;
+    }
+    Mymap hash(4,s);
+    string in;
+    cout<<"you want whose scores?"<<endl;
+    cin>>in;
+    student j = hash.search(in);
+    if(j.value == -1) cout<<"no found"<<endl;
+    else cout<<j.name<<"  "<<j.value;                                                                                                                                                   
     system("pause");
 }
