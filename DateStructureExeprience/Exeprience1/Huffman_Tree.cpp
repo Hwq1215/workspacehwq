@@ -41,7 +41,7 @@ class HuffmanCode{
     void make(){
         int minest,miner;
         for(int i=n+1;i<=m;i++){
-            selete(Htree,i-1,minest,miner);
+            selete(Htree,i-1,minest,miner); //挑选最小的两个结点
             Htree[i].weight=Htree[minest].weight+Htree[miner].weight;
             Htree[i].lchild=minest;
             Htree[i].rchild=miner;

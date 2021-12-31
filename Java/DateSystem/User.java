@@ -11,10 +11,10 @@ public abstract class User {
 	}
 	
 	public boolean changeSelfInfo(String password){
-		//Ð´ÓÃ»§ÐÅÏ¢µ½´æ´¢
+		//Ð´ï¿½Ã»ï¿½ï¿½ï¿½Ï¢ï¿½ï¿½ï¿½æ´¢
 		if (DataProcessing.update(name, password, role)){
 			this.password=password;
-			System.out.println("ÐÞ¸Ä³É¹¦");
+			System.out.println("ï¿½Þ¸Ä³É¹ï¿½");
 			return true;
 		}else
 			return false;
@@ -23,16 +23,16 @@ public abstract class User {
 	public abstract void showMenu();
 	
 	public boolean downloadFile(String filename){
-		System.out.println("ÏÂÔØÎÄ¼þ... ...");
+		System.out.println("ï¿½ï¿½ï¿½ï¿½ï¿½Ä¼ï¿½... ...");
 		return true;
 	}
 	
 	public void showFileList(){
-		System.out.println("ÁÐ±í... ...");
+		System.out.println("ï¿½Ð±ï¿½... ...");
 	}
 	
 	public void exitSystem(){
-		System.out.println("ÏµÍ³ÍË³ö, Ð»Ð»Ê¹ÓÃ ! ");
+		System.out.println("ÏµÍ³ï¿½Ë³ï¿½, Ð»Ð»Ê¹ï¿½ï¿½ ! ");
 		System.exit(0);
 	}
 
@@ -60,5 +60,4 @@ public abstract class User {
 		this.role = role;
 	}
 	
-
 }
