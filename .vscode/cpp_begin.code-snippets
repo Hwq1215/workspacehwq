@@ -31,8 +31,19 @@
 		],
 		"description": "cpp算法初始模板"
 	},
-	"cpp_o2":{
-		"prefix": "cpp_optimize",
-		"body": "#pragma gcc optimize(2)"
-	}
+	"BTree":{
+		"prefix": "BTree",
+		"body": [
+			"struct TreeNode {",
+		  		"\tint val;",
+			    "\tTreeNode *left;",
+			    "\tTreeNode *right;",
+			    "\tTreeNode() : val(0), left(nullptr), right(nullptr) {}",
+			    "\tTreeNode(int x) : val(x), left(nullptr), right(nullptr) {}",
+		   		"\tTreeNode(int x, TreeNode *left, TreeNode *right) : val(x), left(left), right(right) {}",
+				"\t};",
+		],
+		"description": "the Binary Tree",
+	},
+	
 }
