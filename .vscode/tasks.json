@@ -21,7 +21,7 @@
                     "\"${file}\"",
                     "--std=c++11",
                     "-o",
-                    "\"D:/workspace/build/\\${fileBasenameNoExtension}.exe\""
+                    "\"D:/VSCodeWorkSpace/build/\\${fileBasenameNoExtension}.exe\""
                 ]
             }
         }
