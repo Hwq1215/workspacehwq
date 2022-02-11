@@ -6,21 +6,18 @@ class TransfromStr extends BaseMethod{ //运用继承
     //运用封装
     private String nativeStr=new String();
 
-    void SetString(String nstr){
-        nativeStr=nstr;
-    }
-
-    public StringBuffer change(){
+    public StringBuffer change(String nstr){
+    nativeStr=nstr;
     Stack<Character> sign=new Stack<>();
     char ch;
     StringBuffer back=new StringBuffer();
     for(int i = 0;i<nativeStr.length();i++){
         ch=nativeStr.charAt(i);
         
-        if((sign.empty()&&is_operate(ch))||ch=='('){
+        if((sign.empty()&&isOperate(ch))||ch=='('){
             sign.push(ch);
         }
-        else if(is_number(ch)){
+        else if(isNumber(ch)){
             back.append(Integer.toString(changeBigInt(i,nativeStr)));
             i+=(Integer.toString(changeBigInt(i,nativeStr))).length()-1;
             back.append(" ");
@@ -33,7 +30,7 @@ class TransfromStr extends BaseMethod{ //运用继承
                 }
                 sign.pop();
         }
-        else if(is_operate(ch)){
+        else if(isOperate(ch)){
 
                 while(!sign.empty()&&first(ch)<=first(sign.peek())){
                     back.append(sign.pop());
@@ -41,7 +38,7 @@ class TransfromStr extends BaseMethod{ //运用继承
                 }
                     sign.push(ch);
                 
-            if(is_number(nativeStr.charAt(i+1))){
+            if(isNumber(nativeStr.charAt(i+1))){
                     back.append(Integer.toString(changeBigInt(i+1,nativeStr)));
                     back.append(" ");
                     i+=(Integer.toString(changeBigInt(i+1,nativeStr))).length();
@@ -63,7 +60,7 @@ class TransfromStr extends BaseMethod{ //运用继承
         int sum=num;
         for(int j=local+1;j!=str.length()-1;j++){
             c = str.charAt(j);
-            if(is_number(c)){
+            if(isNumber(c)){
             num=(int)(c-'0');
             sum = sum*10+num;
             }
@@ -89,18 +86,20 @@ class TransfromStr extends BaseMethod{ //运用继承
 }
 //根据后序表达式进行计算
 class GetResult extends BaseMethod{ //运用继承
-    static int resultIs(StringBuffer input){
+    static int resultIs(String inp){
+        TransfromStr tran = new TransfromStr();
+        StringBuffer input = tran.change(inp);
         Stack<Integer> num_stack=new Stack<Integer>();
         for(int i=0;i<input.length();i++){
             char ch=input.charAt(i);
-            if(is_operate(ch)){
+            if(isOperate(ch)){
                 int num_b=num_stack.pop();
                 int num_a=num_stack.pop();
-                int res=Calculate(ch,num_a,num_b);
+                int res=calculate(ch,num_a,num_b);
                 num_stack.push(res);
                 if(input.length()-1!=i) i++;
             }
-            else if(is_number(ch)){
+            else if(isNumber(ch)){
                 num_stack.push(changeToInt(i, input));
                 i+=num_jump(i,input);
                 }
@@ -115,7 +114,7 @@ class GetResult extends BaseMethod{ //运用继承
     private static int changeToInt(int local,StringBuffer into){
         int num = (int)(into.charAt(local)-'0');
         int sum = num;
-        for(int i = local+1;into.charAt(i)!=' '&&is_number(into.charAt(i));i++){
+        for(int i = local+1;into.charAt(i)!=' '&&isNumber(into.charAt(i));i++){
             num = (int)(into.charAt(i)-'0');
             sum = sum*10+num;
         }
@@ -123,7 +122,7 @@ class GetResult extends BaseMethod{ //运用继承
     }   
     private static int num_jump(int local,StringBuffer into){
         int cnt=0;
-        for(int i = local;into.charAt(i)!=' '&&is_number(into.charAt(i));i++){
+        for(int i = local;into.charAt(i)!=' '&&isNumber(into.charAt(i));i++){
             cnt++;
         }
         return cnt;
@@ -132,20 +131,20 @@ class GetResult extends BaseMethod{ //运用继承
 }
 //一些可以继承的基本方法
 class BaseMethod{
-    static boolean is_number(char ch){
+    static boolean isNumber(char ch){
         if(ch=='0'||ch=='1'||ch=='2'||ch=='3'||ch=='4'||ch=='5'||ch=='6'||ch=='7'||ch=='8'||ch=='9'){
             return true;
         }
         else return false;
     }
     
-    static boolean is_operate(char ch){
+    static boolean isOperate(char ch){
         if(ch=='*'||ch=='/'||ch=='+'||ch=='-'){
             return true;
         }
         else return false;
     } 
-    static int Calculate(char ch,int num_a,int num_b) {
+    static int calculate(char ch,int num_a,int num_b) {
         switch(ch){
             case '+':
                 return num_a+num_b;
@@ -176,9 +175,8 @@ public class Calculator{
         if(flag){
         BaseMethod B=new TransfromStr();
         TransfromStr t=(TransfromStr)B;   //运用多态
-        t.SetString(flow);
-        System.out.println("逆波兰式是: "+t.change());
-        System.out.println("计算结果是: "+GetResult.resultIs(t.change()));
+        System.out.println("逆波兰式是: "+t.change(flow));
+        System.out.println("计算结果是: "+GetResult.resultIs(flow));
         }
         else{
             System.out.println("输入的式子不合乎规范");

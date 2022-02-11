@@ -2,6 +2,13 @@
     "version": "0.2.0",
     "configurations": [
         {
+            "name": "Python: 当前文件",
+            "type": "python",
+            "request": "launch",
+            "program": "D:\\VSCodeWorkSpace\\py\\bin.py",
+            "console": "integratedTerminal"
+        },
+        {
             "type": "java",
             "name": "Launch app",
             "request": "launch",

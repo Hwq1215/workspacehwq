@@ -43,5 +43,28 @@
 		],
 		"description": "the Binary Tree",
 	},
+	"split()":{
+		"prefix": "split()",
+		"body": [
+			"std::vector<std::string> split(std::string str, std::string pattern)",
+			"{",
+    			"\tstd::string::size_type pos;",
+    			"\tstd::vector<std::string> result;",
+    			"\tstr += pattern;",
+    			"\tint size = str.size();",
+    			"\tfor (int i = 0; i < size; i++)",
+    			"\t{",
+        		"\tpos = str.find(pattern, i);",
+        		"\tif (pos < size)",
+        		"\t{",
+            	"\tstd::string s = str.substr(i, pos - i);",
+            	"\tresult.push_back(s);",
+            	"\ti = pos + pattern.size() - 1;",
+        		"\t}",
+    		"}",
+    			"return result;",
+			"}",
+		]
+	},
 	
 }

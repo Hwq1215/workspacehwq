@@ -46,7 +46,11 @@
         "stdexcept": "cpp",
         "streambuf": "cpp",
         "typeinfo": "cpp",
-        "map": "cpp"
+        "map": "cpp",
+        "bitset": "cpp",
+        "regex": "cpp",
+        "valarray": "cpp",
+        "random": "cpp"
     },
     "java.project.sourcePaths": [
         "Java/exp2-1/src",
