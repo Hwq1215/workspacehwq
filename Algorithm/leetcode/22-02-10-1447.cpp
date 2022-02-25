@@ -32,6 +32,10 @@ public:
         }
         return res;
     }
+    int change_string_int(string s){
+        const char *str = s.c_str();
+        atoi(str);
+    }
 };
 int main(){
 

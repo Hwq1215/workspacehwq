@@ -356,7 +356,7 @@ for i in range(120):
         t.lt(3)
         t.fd(a)
         
-'''#五环
+
 t.penup()
 t.goto(-55,-10)
 t.pendown()
@@ -381,6 +381,6 @@ t.penup()
 t.goto(-30,-20)
 t.pendown()
 t.pencolor("green")
-t.circle(10)'''
+t.circle(10)
 
 t.done()
