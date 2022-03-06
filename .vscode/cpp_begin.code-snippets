@@ -67,12 +67,11 @@
 		]
 	},
 	"change_string_to_int":{
-		"prefix": "change_string_to_int()",
+		"prefix": "string_to_int()",
 		"body": ["int change_string_int(string s){",
 				"\tconst char *str = s.c_str();",
 				"\tatoi(str);",
 				"\t}",
 				"};",]
 	},
-	
 }
