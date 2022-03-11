@@ -18,6 +18,7 @@ class Encode{
         int c;
         weight.resize(256,0);
         while((c = fgetc(in_file)) != EOF){
+            //printf("%02X ",c);
             weight[c]++;
         }
         hufTree = createHuffmanTree(weight);
@@ -35,12 +36,18 @@ class Encode{
         int index = 0;
         nSize = buf.size()/8 + (buf.size()%8==0? 0:1);
         for(int i = 0;i<nSize;i++){
-            while(index<buf.size()){
+            while(index<=buf.size()){
             outPut.push_back(Str2byte(buf.substr(index,index+8)));
                 index += 8;
             }
         }
+        cout<<"str1:"<<endl<<buf.size()<<endl;
+        fclose(p);
         return outPut;
+    }
+    
+    vector<int> getWeight(){
+        return weight;
     }
 
     void PrintHuffman(){

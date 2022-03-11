@@ -45,18 +45,22 @@
 + 除了1外，都是返回List<项目>的数据
 + 项目的属性：
   ```java
-  public class DealingProject {
-    private Integer id;         //项目编号
-    private Integer lowPrice,highPrice; //价格
-    private String port;        //端口
-    private String type;        //种类
-    private String name;        //项目的名字
-    private String demand;      //需求
-    private String introduce;   //项目的内容
-    private String location;    //项目的地域
-    private String ripe;        //成熟度
-    private String time ;       //项目开始时间
-    private String tag;         //标签
+    public class DealingProject {
+        private Integer id;         //项目编号
+        private Integer lowPrice,highPrice; //价格
+        private Integer amount;     //处理量
+        private String imgPath;     //图片文件路径
+        private String port;        //端口
+        private String type;        //种类
+        private String name;        //项目的名字
+        private String demand;      //需求
+        private String introduce;   //项目的内容
+        private String location;    //项目的地域
+        private Integer ripe;        //成熟度
+        private String time ;       //项目开始时间
+        private String tag1;         //标签1
+        private String tag2;         //标签2
+        private String tag3;         //标志3
     }
   ```
 + 如果返回空值,返回时 code = 404，msg = "fail:no exist"
@@ -130,3 +134,33 @@
     @PostMapping("consult")
     //返回数据为空
 ```
+#
+## 五、登录
+1. 用户登录
+   
+```java
+   @PostMapping ("login/in")
+   //提交的表单数据
+   fromdata{
+       String useId;
+       String password;
+   }
+```
+----
+|状态|  返回编码（code）|   返回消息（msg）
+|:--|:--|:--
+|存在该用户且密码正确|200|user exist and password correct
+|存在用户但密码错误|402|user exist but password incorrect
+|不存在用户|403|user no exist
+
+2.用户信息暂定
+```java
+    public class User {
+    private Integer useId;
+    private String password;
+    private String username;
+    }
+```
+     
+   
+

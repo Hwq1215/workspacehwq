@@ -7,6 +7,8 @@ vector<HuffmanTree> createHuffmanTree(vector<int> in){
     result[0].weight = INT32_MAX;
     for(int i = 0;i<256;i++){
         result[i+1].weight = in[i]; 
+        result[i+1].lchild = 0;
+        result[i+1].rchild = 0;
     }
     for(int i = 257;i<513;i++){
         int miner = 0,minest = 0;

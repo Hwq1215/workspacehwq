@@ -11,6 +11,7 @@ struct HEAD{
     int length;
     int weight[256];
 };
+
 char Str2byte(string s){
     char b = 0x00;
     for(int i = 0;i<8;i++){
@@ -22,7 +23,25 @@ char Str2byte(string s){
     return b;
 }
 
-void creatHuffmanFile(string result,string filename){
+string char_Byte(char b){
+    string s = "";
+    for(int i = 0;i<8;i++){
+        if(b&0x01){
+            s.push_back('1');
+        }else{
+            s.push_back('0');
+        }
+        b=b>>1;
+    }
+    reverse(s.begin(),s.end());
+    return s;
+}
+
+void creatHuffmanFile(string result,string filename,vector<int> letters){
+    //string let;
+    //for(int i = 0;i<256;i++){
+    //    let.push_back((char&)letters[i]);
+    //}
     string newFilename = filename+".huf";
     ofstream ofile(newFilename,ios::binary);
     ofile<<result;
