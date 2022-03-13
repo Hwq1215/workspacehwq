@@ -18,10 +18,11 @@
                 "command": "g++",
                 "args": [
                     "-ggdb",
-                    "\"${file}\"",
+                    //"\"${file}\"",       //编译一个cpp文件
+                    "\"${fileDirname}\\*.cpp\"", //编译一个文件下的cpp文件 
                     "--std=c++11",
                     "-o",
-                    "\"D:/VSCodeWorkSpace/build/\\${fileBasenameNoExtension}.exe\""
+                    "\"D:/VSCodeWorkSpace/build/${fileBasenameNoExtension}.exe\""
                 ]
             }
         }

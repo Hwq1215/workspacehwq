@@ -12,10 +12,10 @@ public:
         this->dep = dep;
         this->n = n;
         zero = n;
-        dsf(0,0);
+        dsf_s(0,0);
         return res;
     }
-    void dsf(int effect,int pos){
+    void dsf_s(int effect,int pos){
         if(pos>requests.size()-1){
             if(effect>res && zero == n) res = effect;
             return;
@@ -23,7 +23,7 @@ public:
         if(effect>res && zero == n) res =  effect;
         int zero_init = zero;
         if(requests[pos][0] == requests[pos][1]){
-            dsf(effect+1,pos+1);
+            dsf_s(effect+1,pos+1);
         }else{
             if(dep[requests[pos][0]] == 0){
             zero--;
@@ -39,11 +39,11 @@ public:
             if(dep[requests[pos][1]] == 0){
             zero++;
             }
-            dsf(effect+1,pos+1);
+            dsf_s(effect+1,pos+1);
             zero = zero_init;
             dep[requests[pos][0]]++;
             dep[requests[pos][1]]--;
-            dsf(effect,pos+1);
+            dsf_s(effect,pos+1);
         }
         
     }

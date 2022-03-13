@@ -42,7 +42,8 @@
             "type": "cppdbg",
             "request": "launch",
             "program": "D:/VSCodeWorkSpace/build/${fileBasenameNoExtension}.exe",
-            "args": [],
+            "args": [
+            ],
             "stopAtEntry": false,
             "cwd": "${workspaceFolder}",
             "environment": [],
