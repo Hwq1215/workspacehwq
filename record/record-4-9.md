@@ -1,7 +1,7 @@
-# Spring 接受 json 和发送 json
+# SpringBoot 接受 json 和发送 json
 ## 接收 json
 ### 第一种方法：
-前端传回来的json
+前端传回来的 json
 ```json
 {
     "key0":1,
@@ -17,7 +17,7 @@ Controller中的接口写法
     } 
 ```
 ### 第二种方法：
-前端传回来的json
+前端传回来的 json
 ```json
 {
     "userId":123456,
@@ -72,3 +72,14 @@ Controller中的接口写法
 ```
 
 ## 发送 json
+### 使用@RestController 注解
+```java
+    @RestController
+    public String send(){   
+        Integer userId  = user.getUserId();   
+        String password = user.getPassword();   
+        String username = user.getUsername();
+        User user = new User(userId,password,username);
+        return user;         //这里会自动将对象封装成json
+    }
+```

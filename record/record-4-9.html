@@ -2,7 +2,7 @@
     <html>
     <head>
         <meta charset="UTF-8">
-        <title>Spring &#x63A5;&#x53D7; json &#x548C;&#x53D1;&#x9001; json</title>
+        <title>SpringBoot &#x63a5;&#x53d7; json &#x548c;&#x53d1;&#x9001; json</title>
         <style>
 /* From extension vscode.github */
 /*---------------------------------------------------------------------------------------------
@@ -42,14 +42,12 @@
 .task-list-item { list-style-type: none; } .task-list-item-checkbox { margin-left: -20px; vertical-align: middle; }
 </style>
         
-        
-        
     </head>
     <body class="vscode-body vscode-light">
-        <h1 id="spring-接受-json-和发送-json">Spring 接受 json 和发送 json</h1>
+        <h1 id="springboot-接受-json-和发送-json">SpringBoot 接受 json 和发送 json</h1>
 <h2 id="接收-json">接收 json</h2>
 <h3 id="第一种方法">第一种方法：</h3>
-<p>前端传回来的json</p>
+<p>前端传回来的 json</p>
 <pre><code class="language-json"><div>{
     <span class="hljs-attr">&quot;key0&quot;</span>:<span class="hljs-number">1</span>,
     <span class="hljs-attr">&quot;key1&quot;</span>:<span class="hljs-string">&quot;my name&quot;</span>
@@ -63,7 +61,7 @@
     } 
 </div></code></pre>
 <h3 id="第二种方法">第二种方法：</h3>
-<p>前端传回来的json</p>
+<p>前端传回来的 json</p>
 <pre><code class="language-json"><div>{
     <span class="hljs-attr">&quot;userId&quot;</span>:<span class="hljs-number">123456</span>,
     <span class="hljs-attr">&quot;password&quot;</span>:<span class="hljs-string">&quot;myname&quot;</span>,
@@ -114,6 +112,18 @@
     }         
 </div></code></pre>
 <h2 id="发送-json">发送 json</h2>
+<h3 id="使用restcontroller-注解">使用@RestController 注解</h3>
+<pre><code class="language-java"><div>    <span class="hljs-meta">@RestController</span>
+    <span class="hljs-function"><span class="hljs-keyword">public</span> String <span class="hljs-title">send</span><span class="hljs-params">()</span></span>{   
+        Integer userId  = user.getUserId();   
+        String password = user.getPassword();   
+        String username = user.getUsername();
+        User user = <span class="hljs-keyword">new</span> User(userId,password,username);
+        <span class="hljs-keyword">return</span> user;         <span class="hljs-comment">//这里会自动将对象封装成json</span>
+    }
+</div></code></pre>
 
+        
+        
     </body>
     </html>

@@ -5,7 +5,7 @@
             "name": "Python: 当前文件",
             "type": "python",
             "request": "launch",
-            "program": "D:\\VSCodeWorkSpace\\py\\bin.py",
+            "program": "${file}",
             "console": "integratedTerminal"
         },
         {

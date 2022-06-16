@@ -75,11 +75,15 @@
         "scoped_allocator": "cpp",
         "thread": "cpp",
         "typeindex": "cpp",
-        "cerrno": "cpp"
+        "cerrno": "cpp",
+        "any": "cpp"
     },
     "java.project.sourcePaths": [
         "Java/exp2-1/src",
         "Java/jexp2-2calculation/src"
+    ],
+    "python.analysis.extraPaths": [
+        "C:\\Users\\HWQ\\AppData\\Local\\Programs\\Python\\Python310\\Lib\\site-packages"
     ],
     "cmake.configureOnOpen": true,
     
